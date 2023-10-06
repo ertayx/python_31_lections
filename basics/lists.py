@@ -55,9 +55,9 @@ list1.count('hello') # 3
 list1.count('l') # 0
 
 # insert - добаляет элемент в список по индексу
-# list1 = [1,2,3,4,5,6]
-# list1.insert(0, 'hello')
-# print(list1) # ['hello', 1, 2, 3, 4, 5, 6]
+list1 = [1,2,3,4,5,6]
+list1.insert(0, 'hello')
+print(list1) # ['hello', 1, 2, 3, 4, 5, 6]
 
 # extend - добавляет элементы принятого распакуемого обьекта в список
 list1 = [1,2,3]
@@ -66,18 +66,18 @@ list1.extend([4,5,6]) # [1,2,3,4,5,6]
 list1.extend('hello') # [1,2,3,'h','e','l','l','o']
 
 # reverse - переворачивает список
-# list1 = [1,2,3]
-# list1.reverse()
-# print(list1) # [3,2,1]
+list1 = [1,2,3]
+list1.reverse()
+print(list1) # [3,2,1]
 
 # sort - сортирует список, состоящий из элемнтов одного типа данных
-# list1 = [3,2,1,5,4,1]
-# list1.sort()
-# print(list1) # [1,1,2,3,4,5]
+list1 = [3,2,1,5,4,1]
+list1.sort()
+print(list1) # [1,1,2,3,4,5]
 
-# list1 = ['b', 'a', 'c']
-# list1.sort()
-# print(list1) # ['a', 'b', 'c']
+list1 = ['b', 'a', 'c']
+list1.sort()
+print(list1) # ['a', 'b', 'c']
 
 list1 = ['a', 1, 2, 3]
 list1.sort()
