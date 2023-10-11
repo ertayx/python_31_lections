@@ -69,15 +69,15 @@ set1 = {1,2,3,4}
 set2 = {3,4,5,6}
 set2 = list(set2)
 print(set1.intersection(set2)) # {3,4}
-print(set1 & set2) # Error
+# print(set1 & set2) # Error
 
 # difference - находит отличия относительно первого set (-)
 set1 = {1,2,3,4}
 set2 = {3,4,5,6}
 set2 = list(set2)
 print(set1.difference(set2)) # {1,2}
-print(set2.difference(set1)) # {5,6}
-print(set1 - set2) # Error
+# print(set2.difference(set1)) # {5,6}
+# print(set1 - set2) # Error
 
 # symmetric_difference - находит все отличия между set1 и set2
 set1 = {1,2,3,4}
@@ -96,3 +96,8 @@ set1.discard(5)
 print(set1)
 
 # union, issubset - что делают эти методы?
+
+a = {1,2,3,4,5,'asdf'}
+# print(a)
+popped = a.pop()
+print(a, popped)
