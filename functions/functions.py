@@ -57,3 +57,120 @@ def func(a, b=3, *args, **kwargs):
     return a + b
 print(func(b=4, a=5, c=3))
 # print(1,2,3,4,5,6,sep='assa')
+
+
+"===========Виды аргументов==========="
+# 1. - позиционные
+# 2. - именованные
+
+def func(a, b=5, *args):
+    return a*b
+print(func(1,2,3))
+func(a=5, b=435)
+number1 = 6
+number2 = 7
+func(number1, number2) # 42
+func(b=5, a=435)
+# func(a=5, 4) # SyntaxError: 
+func(4, b=5)
+
+# надо написать функцию которая принимает строку
+# и возвращает перевернутую строку
+# hello
+# olleh
+
+def reverse(string:str)->str:
+    return string[::-1]
+string = reverse('hello') # olleh
+print(string) # olleh
+
+
+def func():
+    print(5)
+    return func
+func()()()()()()()()()
+
+
+# 'руддщ' - 'hello'
+# 'hello' - 'руддщ'
+
+def translate(string:str):
+    eng = "qwertyuiop[]asdfghjkl;'zxcvbnm,."
+    ru = "йцукенгшщзхъфывапролджэячсмитьбю"
+    arab = "ضصثقفغعهخحجدشسيبلاتنمكطئءؤرلاىةز"
+    if string[0] in eng:
+        dict_ = ''.maketrans(eng, arab)
+    else:
+        dict_ = ''.maketrans(arab, eng)
+    return string.translate(dict_)
+print(translate('غخعفعلث'))
+
+# надо написаит функцию is_palindrome
+# которая принимает строку
+# mom, dad, tenet
+# надо вернуть True если слово палиндромное
+# False если слово не палиндромное
+
+def is_palindrome(string:str)->bool:
+    if string[::-1].lower() == string.lower():
+        return True
+    else:
+        return False
+print(is_palindrome('MpPm')) # True
+
+рекурсия - ДЗ
+
+"===========Анонимная функция==========="
+# lambda - анонимная функция, которая записывается в одну строчку
+func = lambda x:x**2
+print(func(2)) # 4
+
+# с помощью функций написать калькулятор
+# plus, minus, mul, div
+
+def plus(a1, a2):
+    return a1+a2
+def minus(a1, a2):
+    return a1-a2
+def mul(a1, a2):
+    return a1*a2
+def div(a1, a2):
+    return a1//a2
+
+
+
+# calc = {
+#     '+':plus(num1, num2),
+#     '-':minus(num1, num2),
+#     '*':mul(num1, num2),
+#     '//':div(num1, num2),
+# }
+calc = {
+    '+': lambda x,y: x+y,
+    '-': lambda x,y: x-y,
+    '*': lambda x,y: x*y,
+    '//': lambda x,y: x//y
+}
+def main():
+    try:
+        num1 = int(input('num1: '))
+        num2 = int(input('num2: '))
+        operation = input('operation choice(+|-|*|//): ')
+
+        func = calc[operation]
+        print(func(num1, num2))
+    except ValueError:
+        print('Введите число!!!')
+    except KeyError:
+        print('Неизвестный оператор')
+    except ZeroDivisionError:
+        print('На ноль делить нельзя!!!')
+    finally:
+        print('До скорой встречи!')
+
+while True:
+    main()
+    answer = input('завершить? (y/n)')
+    if answer.lower() == 'y':
+        break
+
