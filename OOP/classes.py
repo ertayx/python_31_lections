@@ -84,3 +84,104 @@ print(type(human1.__class__)) # мета классы
 
 
 # написать калькулятор на классах 
+class Calc:
+
+    def plus(self, num1, num2):
+        return num1 + num2
+    
+    def minus(self, num1, num2):
+        return num1 - num2
+    
+    def mul(self, num1, num2):
+        return num1 * num2
+    
+    def div(self, num1, num2):
+        return num1 / num2
+    
+obj = Calc()
+print(obj.div(2,3))
+print(obj.minus(3,4))
+
+class Animal:
+    eyes = True
+    heart = True
+    brain = True
+    instaincts = True
+
+    def __init__(self, name, type_, isbeast:bool, sex) -> None:
+        self.name = name
+        self.type = type_
+        self.isbeast = isbeast
+        self.sex = sex
+
+    def breath(self):
+        print('breath')
+    
+    def get_info(self):
+        print(f'I am {self.name}, my type is {self.type}')
+
+# наисать класс ToDo
+# класс хранит в себе информацию о делах экземпляра
+# написать метод для получения всех дел экземпляра
+# написать метод для добавления новых дел и приоритетов
+
+
+class ToDo:
+
+    data_base = []
+
+    def add_todo(self, todo, prioritet):
+        self.data_base.append({prioritet:todo})        
+
+    def get_todo(self, prioritet:int=0):
+        if prioritet:
+            result = []
+            for i in self.data_base:
+                if not i.get(prioritet):
+                    continue
+                result.append(i.get(prioritet, ))
+            return result
+        else:
+            result = [i for i in self.data_base]
+            return result
+    
+    def search(self, title):
+        for i in self.data_base:
+            for k, v in i.items():
+                if not v == title:
+                    continue
+                return {k:v}
+        return 'не найдено'
+
+human = ToDo()
+human.add_todo('упасть', 2)
+human.add_todo('учится', 3)
+human.add_todo('родится', 1)
+human.add_todo('пп', 2)
+print(human.search('упаст')) # {2: 'упасть'}
+# print(human.get_todo(2))
+
+# написать класс Math
+# в котором есть метод get_sqrt
+# который принимает число выводит квадратный корень числа
+
+class Math:
+    result = 0
+
+    def __init__(self, number) -> None:
+        f = self.get_factorial(number)
+        self.result = self.get_sqrt(f)
+
+    def get_factorial(self, number):
+        if number == 1:
+            return 1
+        return number * self.get_factorial(number-1)
+
+    def get_sqrt(self, number):
+        return number**0.5
+    
+
+obj = Math(4)
+print(obj.result)
+
+# написать итерируемый integer
