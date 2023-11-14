@@ -2,7 +2,7 @@ import re
 {1:['username', '...'], 2:[]}
 
 class RegisterUserMixin:
-    id = 1
+    __id = 1
     def register(self, username, email, password, password_confirm) -> None:
         self.id = RegisterUserMixin.id
         RegisterUserMixin.id+=1
@@ -10,11 +10,11 @@ class RegisterUserMixin:
         self.email = email
         self.password = password
         self.password_confirm = password_confirm
-        self.validate_password()
-        self.validate_email()
+        self._validate_password()
+        self._validate_email()
         self.database.update({self.id:[username, email, password]})
     
-    def validate_password(self):
+    def _validate_password(self):
         symbols = '!@#$%^&*_+-~`'
         if not self.password == self.password_confirm:
             raise Exception('Пароли не совпадают')
@@ -28,14 +28,13 @@ class RegisterUserMixin:
         elif not any(i in symbols for i in self.password):
             raise Exception('Пароль дожен состоять из символов')
     
-    def validate_email(self):
+    def _validate_email(self):
         if not re.match(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$', self.email):
             raise Exception('не правильная почта')
         for v in self.database.values():
             if self.email in v:
                 raise Exception('такая почта уже существует')
         
-
 # regex
 # regular expressions
 # регулярные выражения
