@@ -2,7 +2,7 @@ import re
 {1:['username', '...'], 2:[]}
 
 class RegisterUserMixin:
-    __id = 1
+    id = 1
     def register(self, username, email, password, password_confirm) -> None:
         self.id = RegisterUserMixin.id
         RegisterUserMixin.id+=1
