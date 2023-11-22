@@ -37,14 +37,16 @@ class B(A):
 # circle.area() - 
 
 from math import pi
+from abc import ABC, abstractmethod
 
-class ShapeMixin:
+class ShapeMixin(ABC):
     def __init__(self) -> None:
         pass
-
+    
+    @abstractmethod
     def area(self):
         pass
-
+    
 class Square(ShapeMixin):
     def __init__(self, s) -> None:
         self.side = s
